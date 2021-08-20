@@ -12,9 +12,5 @@ CREATE TABLE employee (
 
 DESCRIBE employee;
 
-INSERT INTO employee values 
-  (1, 'Ryan Ray', 20000,'http://localhost:3000/profile/_1629485211468.png'),
-  (2, 'Joe McMillan', 40000, 'http://localhost:3000/profile/_1629485211468.png'),
-  (3, 'John Carter', 50000, 'http://localhost:3000/profile/_1629485211468.png');
 
 SELECT * FROM employee;

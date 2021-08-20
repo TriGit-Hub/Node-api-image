@@ -10,7 +10,8 @@ const fs = require('fs')
 const storage = multer.diskStorage({
   destination: './upload/images',
   filename: (req, file, cb) => {
-      return cb(null, `pokemon_${Date.now()}${path.extname(file.originalname)}`)
+    const {id, name, salary} = req.body;
+      return cb(null, `${name}_photo${path.extname(file.originalname)}`)
   }
 })
 
@@ -84,6 +85,7 @@ router.post("/upload", upload.single('profile'), (req, res) => {
 // INSERT An Employee
 router.post('/',upload.single('profile'), (req, res) => {
   const {id, name, salary} = req.body;
+  storage.filename = name;
   const image = `http://localhost:4000/profile/${req.file.filename}`
   console.log(id, name, salary,image);
   const query = `
