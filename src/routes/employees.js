@@ -5,8 +5,10 @@ const path = require("path");
 const mysqlConnection  = require('../database.js');
 const fs = require('fs')
 
+var cors = require('cors')
 
 
+router.use(cors())
 const storage = multer.diskStorage({
   destination: './upload/images',
   filename: (req, file, cb) => {
@@ -85,7 +87,7 @@ router.post("/upload", upload.single('profile'), (req, res) => {
 // INSERT An Employee
 router.post('/',upload.single('profile'), (req, res) => {
   const {id, name, salary} = req.body;
-  storage.filename = name;
+  //const image = 'prueba';
   const image = `http://localhost:4000/profile/${req.file.filename}`
   console.log(id, name, salary,image);
   const query = `
